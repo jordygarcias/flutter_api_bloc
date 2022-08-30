@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:api_call_exercise/features/anime/anime_entity.dart';
-import 'package:api_call_exercise/features/anime/genre_entity.dart';
+import 'package:api_call_exercise/features/anime/domain/entities/genre_entity.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +37,8 @@ class AnimeList extends StatelessWidget {
     final response = await dio.get(url);
     print(response);
     if (response.statusCode == 200) {
-      final animesMap = response.data['data'].map((item) => AnimeEntity.fromJson(item));
+      final animesMap =
+          response.data['data'].map((item) => AnimeEntity.fromJson(item));
       return List<AnimeEntity>.from(animesMap);
     }
 
@@ -47,23 +48,21 @@ class AnimeList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<AnimeEntity>>(
-      future: _getAnimeList(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          return Center(child: CircularProgressIndicator(
-            color: Theme.of(context).primaryColor,
-          ));
-        }
+        future: _getAnimeList(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return Center(
+                child: CircularProgressIndicator(
+              color: Theme.of(context).primaryColor,
+            ));
+          }
 
-        final animes = snapshot.data!;
+          final animes = snapshot.data!;
 
-        return ListView.builder(
-          itemCount: animes.length,
-          itemBuilder: (context, index) => AnimeCard(
-            anime: animes[index]
-          ),
-        );
-      }
-    );
+          return ListView.builder(
+            itemCount: animes.length,
+            itemBuilder: (context, index) => AnimeCard(anime: animes[index]),
+          );
+        });
   }
 }
