@@ -1,6 +1,6 @@
 import 'package:api_call_exercise/features/anime/anime_list.dart';
 import 'package:api_call_exercise/features/anime/domain/entities/genre_entity.dart';
-import 'package:api_call_exercise/features/anime/genre_list.dart';
+import 'package:api_call_exercise/features/anime/presentation/widgets/genre_list.dart';
 import 'package:flutter/material.dart';
 
 class AnimeHome extends StatefulWidget {
