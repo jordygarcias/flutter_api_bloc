@@ -1,5 +1,4 @@
 import 'package:api_call_exercise/features/anime/anime_detail.dart';
-import 'package:api_call_exercise/features/anime/anime_home.dart';
 import 'package:flutter/material.dart';
 import 'package:api_call_exercise/di/app_di.dart' as di;
 

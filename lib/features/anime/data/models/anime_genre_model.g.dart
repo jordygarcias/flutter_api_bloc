@@ -8,8 +8,8 @@ part of 'anime_genre_model.dart';
 
 AnimeGenreModel _$AnimeGenreModelFromJson(Map<String, dynamic> json) =>
     AnimeGenreModel(
-      id: json['mal_id'] as int,
-      name: json['name'] as String,
+      id: json['mal_id'] as int?,
+      name: json['name'] as String?,
     );
 
 Map<String, dynamic> _$AnimeGenreModelToJson(AnimeGenreModel instance) =>

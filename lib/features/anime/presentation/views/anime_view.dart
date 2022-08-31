@@ -1,4 +1,4 @@
-import 'package:api_call_exercise/features/anime/anime_list.dart';
+import 'package:api_call_exercise/features/anime/presentation/widgets/anime_list.dart';
 import 'package:api_call_exercise/features/anime/domain/entities/genre_entity.dart';
 import 'package:api_call_exercise/features/anime/presentation/widgets/genre_list.dart';
 import 'package:api_call_exercise/features/anime/presentation/bloc/anime_bloc.dart';
@@ -23,7 +23,9 @@ class _AnimeViewState extends State<AnimeView> {
     return Scaffold(
       appBar: AppBar(title: const Text('Animepedia')),
       body: BlocProvider(
-        create: (_) => getIt<AnimeBloc>()..add(GetAnimeGenreList()),
+        create: (_) => getIt<AnimeBloc>()
+          ..add(AnimeGenreListStarted())
+          ..add(AnimeListStarted()),
         child: Column(
           children: [
             SizedBox(
@@ -35,10 +37,7 @@ class _AnimeViewState extends State<AnimeView> {
                 }),
               ),
             ),
-            Expanded(
-                child: AnimeList(
-              genreFilter: _selectedGenre,
-            ))
+            const Expanded(child: AnimeList())
           ],
         ),
       ),

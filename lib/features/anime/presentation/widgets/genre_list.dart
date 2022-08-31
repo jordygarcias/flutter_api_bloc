@@ -18,27 +18,25 @@ class GenreList extends StatelessWidget {
       color: Theme.of(context).primaryColor,
       height: 60,
       child: BlocBuilder<AnimeBloc, AnimeState>(builder: (context, state) {
-        if (state is AnimeLoadingGenres) {
+        if (state.isLoadingGenres) {
           return const Center(
               child: CircularProgressIndicator(
             color: Color(0xFFF9035A),
           ));
-        } else if (state is AnimeSuccessLoadingGenres) {
-          final List<GenreEntity> genres = state.genres;
-
-          return ListView.builder(
-            itemCount: genres.length,
-            itemBuilder: (context, index) => GenreItem(
-                genre: genres[index],
-                isSelected: selectedGenre?.id == genres[index].id,
-                onSelectGenre: (GenreEntity genre) => onSelectGenre(genre)),
-            scrollDirection: Axis.horizontal,
-          );
-        } else if (state is AnimeErrorLoadingGenres) {
+        } else if (state.genreListFailure != null) {
           return const Center(child: Text('Error al cargar'));
         }
 
-        return const SizedBox();
+        final List<GenreEntity> genres = state.genres;
+
+        return ListView.builder(
+          itemCount: genres.length,
+          itemBuilder: (context, index) => GenreItem(
+              genre: genres[index],
+              isSelected: selectedGenre?.id == genres[index].id,
+              onSelectGenre: (GenreEntity genre) => onSelectGenre(genre)),
+          scrollDirection: Axis.horizontal,
+        );
       }),
     );
   }
