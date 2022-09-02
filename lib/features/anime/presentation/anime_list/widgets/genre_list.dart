@@ -1,5 +1,5 @@
 import 'package:api_call_exercise/features/anime/domain/entities/genre_entity.dart';
-import 'package:api_call_exercise/features/anime/presentation/bloc/anime_bloc.dart';
+import 'package:api_call_exercise/features/anime/presentation/anime_list/bloc/anime_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

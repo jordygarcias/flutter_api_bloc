@@ -1,6 +1,5 @@
+import 'package:api_call_exercise/features/anime/domain/entities/anime_entity.dart';
 import 'package:flutter/material.dart';
-
-import '../../domain/entities/anime_entity.dart';
 
 class AnimeCard extends StatelessWidget {
   final AnimeEntity anime;

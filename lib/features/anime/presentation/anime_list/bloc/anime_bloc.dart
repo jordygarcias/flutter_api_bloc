@@ -1,11 +1,10 @@
+import 'package:api_call_exercise/core/failures/failures.dart';
+import 'package:api_call_exercise/features/anime/domain/entities/anime_entity.dart';
+import 'package:api_call_exercise/features/anime/domain/entities/genre_entity.dart';
+import 'package:api_call_exercise/features/anime/domain/usecases/get_anime_by_genre_use_case.dart';
+import 'package:api_call_exercise/features/anime/domain/usecases/get_anime_genre_list_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../../../../core/failures/failures.dart';
-import '../../domain/entities/anime_entity.dart';
-import '../../domain/entities/genre_entity.dart';
-import '../../domain/usecases/get_anime_by_genre_use_case.dart';
-import '../../domain/usecases/get_anime_genre_list_usecase.dart';
 
 part 'anime_bloc.freezed.dart';
 part 'anime_event.dart';

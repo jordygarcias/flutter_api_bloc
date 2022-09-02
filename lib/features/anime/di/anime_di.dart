@@ -12,7 +12,7 @@ import '../data/repositories/anime_repository_impl.dart';
 import '../domain/repositories/anime_genre_respository.dart';
 import '../domain/repositories/anime_repository.dart';
 import '../domain/usecases/get_anime_genre_list_usecase.dart';
-import '../presentation/bloc/anime_bloc.dart';
+import '../presentation/anime_list/bloc/anime_bloc.dart';
 
 class AnimeDi {
   static void init() {

@@ -1,8 +1,8 @@
+import 'package:api_call_exercise/di/app_di.dart' as di;
 import 'package:api_call_exercise/features/anime/anime_detail.dart';
 import 'package:flutter/material.dart';
-import 'package:api_call_exercise/di/app_di.dart' as di;
 
-import 'features/anime/presentation/views/anime_view.dart';
+import 'features/anime/presentation/anime_list/views/anime_view.dart';
 
 void main() {
   di.init();
