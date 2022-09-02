@@ -19,7 +19,7 @@ mixin _$AnimeState {
   List<GenreEntity> get genres => throw _privateConstructorUsedError;
   List<AnimeEntity> get animes => throw _privateConstructorUsedError;
   bool get isLoadingGenres => throw _privateConstructorUsedError;
-  bool get isLoadingTopAnimes => throw _privateConstructorUsedError;
+  bool get isLoadingAnimes => throw _privateConstructorUsedError;
   Failure? get genreListFailure => throw _privateConstructorUsedError;
   Failure? get animeListFailure => throw _privateConstructorUsedError;
   GenreEntity? get selectedGenre => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $AnimeStateCopyWith<$Res> {
       {List<GenreEntity> genres,
       List<AnimeEntity> animes,
       bool isLoadingGenres,
-      bool isLoadingTopAnimes,
+      bool isLoadingAnimes,
       Failure? genreListFailure,
       Failure? animeListFailure,
       GenreEntity? selectedGenre});
@@ -57,7 +57,7 @@ class _$AnimeStateCopyWithImpl<$Res> implements $AnimeStateCopyWith<$Res> {
     Object? genres = freezed,
     Object? animes = freezed,
     Object? isLoadingGenres = freezed,
-    Object? isLoadingTopAnimes = freezed,
+    Object? isLoadingAnimes = freezed,
     Object? genreListFailure = freezed,
     Object? animeListFailure = freezed,
     Object? selectedGenre = freezed,
@@ -75,9 +75,9 @@ class _$AnimeStateCopyWithImpl<$Res> implements $AnimeStateCopyWith<$Res> {
           ? _value.isLoadingGenres
           : isLoadingGenres // ignore: cast_nullable_to_non_nullable
               as bool,
-      isLoadingTopAnimes: isLoadingTopAnimes == freezed
-          ? _value.isLoadingTopAnimes
-          : isLoadingTopAnimes // ignore: cast_nullable_to_non_nullable
+      isLoadingAnimes: isLoadingAnimes == freezed
+          ? _value.isLoadingAnimes
+          : isLoadingAnimes // ignore: cast_nullable_to_non_nullable
               as bool,
       genreListFailure: genreListFailure == freezed
           ? _value.genreListFailure
@@ -106,7 +106,7 @@ abstract class _$$_AnimeStateCopyWith<$Res>
       {List<GenreEntity> genres,
       List<AnimeEntity> animes,
       bool isLoadingGenres,
-      bool isLoadingTopAnimes,
+      bool isLoadingAnimes,
       Failure? genreListFailure,
       Failure? animeListFailure,
       GenreEntity? selectedGenre});
@@ -127,7 +127,7 @@ class __$$_AnimeStateCopyWithImpl<$Res> extends _$AnimeStateCopyWithImpl<$Res>
     Object? genres = freezed,
     Object? animes = freezed,
     Object? isLoadingGenres = freezed,
-    Object? isLoadingTopAnimes = freezed,
+    Object? isLoadingAnimes = freezed,
     Object? genreListFailure = freezed,
     Object? animeListFailure = freezed,
     Object? selectedGenre = freezed,
@@ -145,9 +145,9 @@ class __$$_AnimeStateCopyWithImpl<$Res> extends _$AnimeStateCopyWithImpl<$Res>
           ? _value.isLoadingGenres
           : isLoadingGenres // ignore: cast_nullable_to_non_nullable
               as bool,
-      isLoadingTopAnimes: isLoadingTopAnimes == freezed
-          ? _value.isLoadingTopAnimes
-          : isLoadingTopAnimes // ignore: cast_nullable_to_non_nullable
+      isLoadingAnimes: isLoadingAnimes == freezed
+          ? _value.isLoadingAnimes
+          : isLoadingAnimes // ignore: cast_nullable_to_non_nullable
               as bool,
       genreListFailure: genreListFailure == freezed
           ? _value.genreListFailure
@@ -172,7 +172,7 @@ class _$_AnimeState implements _AnimeState {
       {required final List<GenreEntity> genres,
       required final List<AnimeEntity> animes,
       required this.isLoadingGenres,
-      required this.isLoadingTopAnimes,
+      required this.isLoadingAnimes,
       this.genreListFailure,
       this.animeListFailure,
       this.selectedGenre})
@@ -196,7 +196,7 @@ class _$_AnimeState implements _AnimeState {
   @override
   final bool isLoadingGenres;
   @override
-  final bool isLoadingTopAnimes;
+  final bool isLoadingAnimes;
   @override
   final Failure? genreListFailure;
   @override
@@ -206,7 +206,7 @@ class _$_AnimeState implements _AnimeState {
 
   @override
   String toString() {
-    return 'AnimeState(genres: $genres, animes: $animes, isLoadingGenres: $isLoadingGenres, isLoadingTopAnimes: $isLoadingTopAnimes, genreListFailure: $genreListFailure, animeListFailure: $animeListFailure, selectedGenre: $selectedGenre)';
+    return 'AnimeState(genres: $genres, animes: $animes, isLoadingGenres: $isLoadingGenres, isLoadingAnimes: $isLoadingAnimes, genreListFailure: $genreListFailure, animeListFailure: $animeListFailure, selectedGenre: $selectedGenre)';
   }
 
   @override
@@ -219,7 +219,7 @@ class _$_AnimeState implements _AnimeState {
             const DeepCollectionEquality()
                 .equals(other.isLoadingGenres, isLoadingGenres) &&
             const DeepCollectionEquality()
-                .equals(other.isLoadingTopAnimes, isLoadingTopAnimes) &&
+                .equals(other.isLoadingAnimes, isLoadingAnimes) &&
             const DeepCollectionEquality()
                 .equals(other.genreListFailure, genreListFailure) &&
             const DeepCollectionEquality()
@@ -234,7 +234,7 @@ class _$_AnimeState implements _AnimeState {
       const DeepCollectionEquality().hash(_genres),
       const DeepCollectionEquality().hash(_animes),
       const DeepCollectionEquality().hash(isLoadingGenres),
-      const DeepCollectionEquality().hash(isLoadingTopAnimes),
+      const DeepCollectionEquality().hash(isLoadingAnimes),
       const DeepCollectionEquality().hash(genreListFailure),
       const DeepCollectionEquality().hash(animeListFailure),
       const DeepCollectionEquality().hash(selectedGenre));
@@ -250,7 +250,7 @@ abstract class _AnimeState implements AnimeState {
       {required final List<GenreEntity> genres,
       required final List<AnimeEntity> animes,
       required final bool isLoadingGenres,
-      required final bool isLoadingTopAnimes,
+      required final bool isLoadingAnimes,
       final Failure? genreListFailure,
       final Failure? animeListFailure,
       final GenreEntity? selectedGenre}) = _$_AnimeState;
@@ -262,7 +262,7 @@ abstract class _AnimeState implements AnimeState {
   @override
   bool get isLoadingGenres;
   @override
-  bool get isLoadingTopAnimes;
+  bool get isLoadingAnimes;
   @override
   Failure? get genreListFailure;
   @override

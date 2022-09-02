@@ -6,7 +6,7 @@ class AnimeState with _$AnimeState {
     required List<GenreEntity> genres,
     required List<AnimeEntity> animes,
     required bool isLoadingGenres,
-    required bool isLoadingTopAnimes,
+    required bool isLoadingAnimes,
     Failure? genreListFailure,
     Failure? animeListFailure,
     GenreEntity? selectedGenre,
@@ -16,7 +16,7 @@ class AnimeState with _$AnimeState {
       genres: [],
       animes: [],
       isLoadingGenres: false,
-      isLoadingTopAnimes: false,
+      isLoadingAnimes: false,
       genreListFailure: null,
       animeListFailure: null);
 }

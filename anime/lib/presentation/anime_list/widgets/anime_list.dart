@@ -10,7 +10,7 @@ class AnimeList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AnimeBloc, AnimeState>(builder: (context, state) {
-      if (state.isLoadingTopAnimes) {
+      if (state.isLoadingAnimes) {
         return Center(
             child: CircularProgressIndicator(
           color: Theme.of(context).primaryColor,

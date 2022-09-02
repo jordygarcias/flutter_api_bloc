@@ -31,7 +31,7 @@ class AnimeBloc extends Bloc<AnimeEvent, AnimeState> {
     });
 
     on<AnimeListStarted>((event, emit) async {
-      emit(state.copyWith(isLoadingTopAnimes: true, animeListFailure: null));
+      emit(state.copyWith(isLoadingAnimes: true, animeListFailure: null));
       final selectedGenre = state.selectedGenre;
       final selectedGenreId =
           selectedGenre != null ? int.tryParse(selectedGenre.id) : null;
@@ -39,9 +39,9 @@ class AnimeBloc extends Bloc<AnimeEvent, AnimeState> {
 
       listOrFailure.fold(
           (Failure failure) => emit(state.copyWith(
-              isLoadingTopAnimes: false, animeListFailure: failure)),
+              isLoadingAnimes: false, animeListFailure: failure)),
           (List<AnimeEntity> animes) =>
-              emit(state.copyWith(animes: animes, isLoadingTopAnimes: false)));
+              emit(state.copyWith(animes: animes, isLoadingAnimes: false)));
     });
 
     on<AnimeGenreSelected>((event, emit) async {
