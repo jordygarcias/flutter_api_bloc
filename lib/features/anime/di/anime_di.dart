@@ -3,6 +3,7 @@ import 'package:api_call_exercise/features/anime/data/repositories/anime_charact
 import 'package:api_call_exercise/features/anime/domain/repositories/anime_character_repository.dart';
 import 'package:api_call_exercise/features/anime/domain/usecases/get_anime_by_genre_use_case.dart';
 import 'package:api_call_exercise/features/anime/domain/usecases/get_anime_characters_by_anime_id_usecase.dart';
+import 'package:api_call_exercise/features/anime/presentation/anime_details/bloc/anime_details_bloc.dart';
 
 import '../../../di/app_di.dart';
 import '../data/datasources/remote/anime_genre_remote_datasource.dart';
@@ -45,5 +46,8 @@ class AnimeDi {
           getAnimeGenreListUseCase: getIt(),
           getAnimeByGenreUseCase: getIt(),
         ));
+    getIt.registerFactory<AnimeDetailsBloc>(
+      () => AnimeDetailsBloc(getAnimeCharactersByAnimeIdUseCase: getIt()),
+    );
   }
 }

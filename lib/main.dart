@@ -1,5 +1,5 @@
 import 'package:api_call_exercise/di/app_di.dart' as di;
-import 'package:api_call_exercise/features/anime/anime_detail.dart';
+import 'package:api_call_exercise/features/anime/presentation/anime_details/view/anime_detail_view.dart';
 import 'package:flutter/material.dart';
 
 import 'features/anime/presentation/anime_list/views/anime_view.dart';
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       initialRoute: 'home',
       routes: {
         'home': (_) => const AnimeView(),
-        'detail': (_) => AnimeDetail(),
+        'detail': (_) => AnimeDetailView(),
       },
     );
   }

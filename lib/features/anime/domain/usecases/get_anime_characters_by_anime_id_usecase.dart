@@ -10,6 +10,13 @@ class GetAnimeCharactersByAnimeIdUseCase {
     required this.repository,
   });
 
-  Future<Either<Failure, List<AnimeCharacterEntity>>> call(int animeId) =>
-      repository.getCharactersForAnime(animeId: animeId);
+  Future<Either<Failure, List<AnimeCharacterEntity>>> call({
+    required String animeId,
+  }) async {
+    final intAnimeId = int.tryParse(animeId);
+    if (intAnimeId == null) {
+      return Left(UnexpectedFailure());
+    }
+    return repository.getCharactersForAnime(animeId: intAnimeId);
+  }
 }
