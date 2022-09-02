@@ -1,4 +1,5 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'anime_genre_model.dart';
 import 'anime_image_model.dart';
@@ -6,7 +7,7 @@ import 'anime_image_model.dart';
 part 'anime_model.g.dart';
 
 @JsonSerializable()
-class AnimeModel {
+class AnimeModel extends Equatable {
   @JsonKey(name: 'mal_id')
   final int? id;
   @JsonKey(name: 'title')
@@ -18,7 +19,7 @@ class AnimeModel {
   final double? score;
   final List<AnimeGenreModel>? genres;
 
-  AnimeModel(
+  const AnimeModel(
       {this.id,
       this.name,
       this.images,
@@ -33,21 +34,6 @@ class AnimeModel {
   Map<String, dynamic> toJson() => _$AnimeModelToJson(this);
 
   @override
-  String toString() {
-    return '''
-      [id: $id, title $name, images=$images, ...]
-    ''';
-  }
+  List<Object?> get props =>
+      [id, name, images, synopsis, rating, score, genres];
 }
-
-/**
- *
- *
-  final int id;
-  final String name;
-  final String imageUrl;
-  final String synopsis;
-  final String rating;
-  final double score;
-  final List<String> genres;
- */
