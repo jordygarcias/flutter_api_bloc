@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'genre_item.dart';
 
 class GenreList extends StatelessWidget {
-  final Function onSelectGenre;
+  final void Function(GenreEntity) onSelectGenre;
   final GenreEntity? selectedGenre;
 
   const GenreList({Key? key, required this.onSelectGenre, this.selectedGenre})

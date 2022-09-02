@@ -22,6 +22,7 @@ mixin _$AnimeState {
   bool get isLoadingTopAnimes => throw _privateConstructorUsedError;
   Failure? get genreListFailure => throw _privateConstructorUsedError;
   Failure? get animeListFailure => throw _privateConstructorUsedError;
+  GenreEntity? get selectedGenre => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AnimeStateCopyWith<AnimeState> get copyWith =>
@@ -39,7 +40,8 @@ abstract class $AnimeStateCopyWith<$Res> {
       bool isLoadingGenres,
       bool isLoadingTopAnimes,
       Failure? genreListFailure,
-      Failure? animeListFailure});
+      Failure? animeListFailure,
+      GenreEntity? selectedGenre});
 }
 
 /// @nodoc
@@ -58,6 +60,7 @@ class _$AnimeStateCopyWithImpl<$Res> implements $AnimeStateCopyWith<$Res> {
     Object? isLoadingTopAnimes = freezed,
     Object? genreListFailure = freezed,
     Object? animeListFailure = freezed,
+    Object? selectedGenre = freezed,
   }) {
     return _then(_value.copyWith(
       genres: genres == freezed
@@ -84,6 +87,10 @@ class _$AnimeStateCopyWithImpl<$Res> implements $AnimeStateCopyWith<$Res> {
           ? _value.animeListFailure
           : animeListFailure // ignore: cast_nullable_to_non_nullable
               as Failure?,
+      selectedGenre: selectedGenre == freezed
+          ? _value.selectedGenre
+          : selectedGenre // ignore: cast_nullable_to_non_nullable
+              as GenreEntity?,
     ));
   }
 }
@@ -101,7 +108,8 @@ abstract class _$$_AnimeStateCopyWith<$Res>
       bool isLoadingGenres,
       bool isLoadingTopAnimes,
       Failure? genreListFailure,
-      Failure? animeListFailure});
+      Failure? animeListFailure,
+      GenreEntity? selectedGenre});
 }
 
 /// @nodoc
@@ -122,6 +130,7 @@ class __$$_AnimeStateCopyWithImpl<$Res> extends _$AnimeStateCopyWithImpl<$Res>
     Object? isLoadingTopAnimes = freezed,
     Object? genreListFailure = freezed,
     Object? animeListFailure = freezed,
+    Object? selectedGenre = freezed,
   }) {
     return _then(_$_AnimeState(
       genres: genres == freezed
@@ -148,6 +157,10 @@ class __$$_AnimeStateCopyWithImpl<$Res> extends _$AnimeStateCopyWithImpl<$Res>
           ? _value.animeListFailure
           : animeListFailure // ignore: cast_nullable_to_non_nullable
               as Failure?,
+      selectedGenre: selectedGenre == freezed
+          ? _value.selectedGenre
+          : selectedGenre // ignore: cast_nullable_to_non_nullable
+              as GenreEntity?,
     ));
   }
 }
@@ -161,7 +174,8 @@ class _$_AnimeState implements _AnimeState {
       required this.isLoadingGenres,
       required this.isLoadingTopAnimes,
       this.genreListFailure,
-      this.animeListFailure})
+      this.animeListFailure,
+      this.selectedGenre})
       : _genres = genres,
         _animes = animes;
 
@@ -187,10 +201,12 @@ class _$_AnimeState implements _AnimeState {
   final Failure? genreListFailure;
   @override
   final Failure? animeListFailure;
+  @override
+  final GenreEntity? selectedGenre;
 
   @override
   String toString() {
-    return 'AnimeState(genres: $genres, animes: $animes, isLoadingGenres: $isLoadingGenres, isLoadingTopAnimes: $isLoadingTopAnimes, genreListFailure: $genreListFailure, animeListFailure: $animeListFailure)';
+    return 'AnimeState(genres: $genres, animes: $animes, isLoadingGenres: $isLoadingGenres, isLoadingTopAnimes: $isLoadingTopAnimes, genreListFailure: $genreListFailure, animeListFailure: $animeListFailure, selectedGenre: $selectedGenre)';
   }
 
   @override
@@ -207,7 +223,9 @@ class _$_AnimeState implements _AnimeState {
             const DeepCollectionEquality()
                 .equals(other.genreListFailure, genreListFailure) &&
             const DeepCollectionEquality()
-                .equals(other.animeListFailure, animeListFailure));
+                .equals(other.animeListFailure, animeListFailure) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedGenre, selectedGenre));
   }
 
   @override
@@ -218,7 +236,8 @@ class _$_AnimeState implements _AnimeState {
       const DeepCollectionEquality().hash(isLoadingGenres),
       const DeepCollectionEquality().hash(isLoadingTopAnimes),
       const DeepCollectionEquality().hash(genreListFailure),
-      const DeepCollectionEquality().hash(animeListFailure));
+      const DeepCollectionEquality().hash(animeListFailure),
+      const DeepCollectionEquality().hash(selectedGenre));
 
   @JsonKey(ignore: true)
   @override
@@ -233,7 +252,8 @@ abstract class _AnimeState implements AnimeState {
       required final bool isLoadingGenres,
       required final bool isLoadingTopAnimes,
       final Failure? genreListFailure,
-      final Failure? animeListFailure}) = _$_AnimeState;
+      final Failure? animeListFailure,
+      final GenreEntity? selectedGenre}) = _$_AnimeState;
 
   @override
   List<GenreEntity> get genres;
@@ -247,6 +267,8 @@ abstract class _AnimeState implements AnimeState {
   Failure? get genreListFailure;
   @override
   Failure? get animeListFailure;
+  @override
+  GenreEntity? get selectedGenre;
   @override
   @JsonKey(ignore: true)
   _$$_AnimeStateCopyWith<_$_AnimeState> get copyWith =>

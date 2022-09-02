@@ -9,6 +9,7 @@ class AnimeState with _$AnimeState {
     required bool isLoadingTopAnimes,
     Failure? genreListFailure,
     Failure? animeListFailure,
+    GenreEntity? selectedGenre,
   }) = _AnimeState;
 
   factory AnimeState.initial() => AnimeState(

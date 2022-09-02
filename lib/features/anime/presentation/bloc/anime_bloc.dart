@@ -1,15 +1,15 @@
 import 'package:bloc/bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../core/failures/failures.dart';
 import '../../domain/entities/anime_entity.dart';
 import '../../domain/entities/genre_entity.dart';
 import '../../domain/usecases/get_anime_genre_list_usecase.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 import '../../domain/usecases/get_anime_top_list_usecase.dart';
 
-part 'anime_state.dart';
-part 'anime_event.dart';
 part 'anime_bloc.freezed.dart';
+part 'anime_event.dart';
+part 'anime_state.dart';
 
 class AnimeBloc extends Bloc<AnimeEvent, AnimeState> {
   final GetAnimeGenreListUseCase getAnimeGenreListUseCase;
@@ -39,6 +39,10 @@ class AnimeBloc extends Bloc<AnimeEvent, AnimeState> {
               isLoadingTopAnimes: false, animeListFailure: failure)),
           (List<AnimeEntity> animes) =>
               emit(state.copyWith(animes: animes, isLoadingTopAnimes: false)));
+    });
+
+    on<AnimeGenreSelected>((event, emit) async {
+      emit(state.copyWith(selectedGenre: event.selectedGenre));
     });
   }
 }

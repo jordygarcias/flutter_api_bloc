@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class GenreItem extends StatelessWidget {
   final bool isSelected;
   final GenreEntity genre;
-  final Function onSelectGenre;
+  final void Function(GenreEntity) onSelectGenre;
 
   const GenreItem({
     Key? key,
