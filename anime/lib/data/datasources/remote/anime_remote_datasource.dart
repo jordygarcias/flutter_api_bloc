@@ -1,5 +1,6 @@
-import 'package:core/core.dart';
 import 'package:core/failures/failures.dart';
+import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 import '../../models/anime_model.dart';
 

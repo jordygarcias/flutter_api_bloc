@@ -1,5 +1,5 @@
-import 'package:core/core.dart';
 import 'package:core/failures/failures.dart';
+import 'package:dartz/dartz.dart';
 
 import '../../data/models/anime_genre_model.dart';
 import '../../domain/entities/genre_entity.dart';

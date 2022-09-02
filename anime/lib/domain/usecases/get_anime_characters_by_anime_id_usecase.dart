@@ -1,5 +1,5 @@
-import 'package:core/core.dart';
 import 'package:core/failures/failures.dart';
+import 'package:dartz/dartz.dart';
 
 import '../entities/anime_character_entity.dart';
 import '../repositories/anime_character_repository.dart';

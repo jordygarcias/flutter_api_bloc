@@ -1,5 +1,6 @@
-import 'package:core/core.dart';
 import 'package:core/failures/failures.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../domain/entities/anime_entity.dart';
 import '../../../domain/entities/genre_entity.dart';

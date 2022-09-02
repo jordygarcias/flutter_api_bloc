@@ -1,4 +1,4 @@
-import 'package:core/core.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 import 'anime_genre_model.dart';
 import 'anime_image_model.dart';

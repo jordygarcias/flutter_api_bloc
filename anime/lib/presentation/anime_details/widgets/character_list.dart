@@ -1,5 +1,5 @@
-import 'package:core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../domain/entities/anime_character_entity.dart';
 import '../bloc/anime_details_bloc.dart';

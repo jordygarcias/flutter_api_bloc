@@ -1,4 +1,4 @@
-import 'package:core/core.dart';
+import 'package:get_it/get_it.dart';
 
 import '../data/datasources/remote/anime_character_remote_data_source.dart';
 import '../data/datasources/remote/anime_genre_remote_datasource.dart';
