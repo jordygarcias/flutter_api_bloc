@@ -17,7 +17,6 @@ class AnimeRepositoryImpl implements AnimeRepository {
   @override
   Future<Either<Failure, List<AnimeEntity>>> getAnimeTopList() async {
     final response = await datasource.getAnimeTopList();
-    print(response);
 
     return response.map((List<AnimeModel> animes) {
       final List<AnimeModel> cleaned =

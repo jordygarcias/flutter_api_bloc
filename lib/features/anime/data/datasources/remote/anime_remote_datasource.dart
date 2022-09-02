@@ -13,11 +13,8 @@ class AnimeRemoteDataSource {
     try {
       final response = await client.get('top/anime');
       if (response.statusCode == 200) {
-        final animeList = response.data['data'].map((item) {
-          final map = AnimeModel.fromJson(item);
-          print(map.images);
-          return map;
-        });
+        final animeList =
+            response.data['data'].map((item) => AnimeModel.fromJson(item));
         return Right(List<AnimeModel>.from(animeList));
       }
       return Left(ApiFailure());

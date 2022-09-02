@@ -20,9 +20,6 @@ class AnimeList extends StatelessWidget {
       }
 
       final animes = state.animes;
-      if (animes.length > 0) {
-        print(animes[0].imageUrl);
-      }
       return ListView.builder(
         itemCount: animes.length,
         itemBuilder: (context, index) => AnimeCard(anime: animes[index]),
