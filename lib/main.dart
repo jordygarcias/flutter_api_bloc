@@ -1,4 +1,4 @@
-import 'package:api_call_exercise/di/app_di.dart' as di;
+import 'package:api_call_exercise/app_di.dart' as di;
 import 'package:flutter/material.dart';
 
 import 'app_navigator.dart';

@@ -1,6 +1,5 @@
 import 'package:anime/di/anime_di.dart';
-import 'package:dio/dio.dart';
-import 'package:get_it/get_it.dart';
+import 'package:core/core.dart';
 
 final getIt = GetIt.instance;
 
