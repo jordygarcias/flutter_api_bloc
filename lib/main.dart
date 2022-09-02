@@ -1,7 +1,7 @@
-import 'package:anime/presentation/anime_details/view/anime_detail_view.dart';
-import 'package:anime/presentation/anime_list/views/anime_view.dart';
 import 'package:api_call_exercise/di/app_di.dart' as di;
 import 'package:flutter/material.dart';
+
+import 'app_navigator.dart';
 
 void main() {
   di.init();
@@ -21,11 +21,8 @@ class MyApp extends StatelessWidget {
           appBarTheme: const AppBarTheme(
             color: Color(0xFF195198),
           )),
-      initialRoute: 'home',
-      routes: {
-        'home': (_) => const AnimeView(),
-        'detail': (_) => const AnimeDetailView(),
-      },
+      initialRoute: AppNavigator.initialRoute,
+      routes: AppNavigator.routes,
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:anime/navigation/anime_navigator.dart';
 import 'package:flutter/material.dart';
 
 import '../../../domain/entities/anime_entity.dart';
@@ -19,9 +20,10 @@ class AnimeCard extends StatelessWidget {
         child: Row(
           children: [
             GestureDetector(
-              onTap: () {
-                Navigator.of(context).pushNamed('detail', arguments: anime);
-              },
+              onTap: () => AnimeNavigator.navigateToDetails(
+                context: context,
+                anime: anime,
+              ),
               child: Hero(
                 tag: anime.name,
                 child: ClipRRect(
