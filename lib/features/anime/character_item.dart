@@ -1,4 +1,4 @@
-import 'package:api_call_exercise/features/anime/anime_character_entity.dart';
+import 'package:api_call_exercise/features/anime/domain/entities/anime_character_entity.dart';
 import 'package:flutter/material.dart';
 
 class CharacterItem extends StatelessWidget {
@@ -11,24 +11,17 @@ class CharacterItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        ClipRRect(
+    return Column(mainAxisSize: MainAxisSize.min, children: [
+      ClipRRect(
           borderRadius: BorderRadius.circular(100),
           child: SizedBox(
-            width: 60,
-            height: 60,
-            child: Image.network(character.imageUrl, fit: BoxFit.fitWidth)
-          )
-        ),
-        const SizedBox(height: 3),
-        Text(
-          character.name,
+              width: 60,
+              height: 60,
+              child: Image.network(character.imageUrl, fit: BoxFit.fitWidth))),
+      const SizedBox(height: 3),
+      Text(character.name,
           style: Theme.of(context).textTheme.bodySmall,
-          overflow: TextOverflow.ellipsis
-        ),
-      ]
-    );
+          overflow: TextOverflow.ellipsis),
+    ]);
   }
 }

@@ -1,8 +1,7 @@
 import 'dart:io';
 
-import 'package:api_call_exercise/features/anime/anime_character_entity.dart';
-
 import 'package:api_call_exercise/features/anime/character_item.dart';
+import 'package:api_call_exercise/features/anime/domain/entities/anime_character_entity.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';

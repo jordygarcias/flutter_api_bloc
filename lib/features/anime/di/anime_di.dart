@@ -1,4 +1,8 @@
+import 'package:api_call_exercise/features/anime/data/datasources/remote/anime_character_remote_data_source.dart';
+import 'package:api_call_exercise/features/anime/data/repositories/anime_character_repository_impl.dart';
+import 'package:api_call_exercise/features/anime/domain/repositories/anime_character_repository.dart';
 import 'package:api_call_exercise/features/anime/domain/usecases/get_anime_by_genre_use_case.dart';
+import 'package:api_call_exercise/features/anime/domain/usecases/get_anime_characters_by_anime_id_usecase.dart';
 
 import '../../../di/app_di.dart';
 import '../data/datasources/remote/anime_genre_remote_datasource.dart';
@@ -12,18 +16,31 @@ import '../presentation/bloc/anime_bloc.dart';
 
 class AnimeDi {
   static void init() {
+    //  DataSources
     getIt.registerLazySingleton<AnimeGenreRemoteDataSource>(
         () => AnimeGenreRemoteDataSource(client: getIt()));
     getIt.registerLazySingleton<AnimeRemoteDataSource>(
         () => AnimeRemoteDataSource(client: getIt()));
+    getIt.registerLazySingleton<AnimeCharacterRemoteDataSource>(
+        () => AnimeCharacterRemoteDataSource(client: getIt()));
+
+    //  Repositories
     getIt.registerLazySingleton<AnimeGenreRepository>(
         () => AnimeGenreRepositoryImpl(dataSource: getIt()));
     getIt.registerLazySingleton<AnimeRepository>(
         () => AnimeRepositoryImpl(datasource: getIt()));
+    getIt.registerLazySingleton<AnimeCharacterRepository>(
+        () => AnimeCharacterRepositoryImpl(dataSource: getIt()));
+
+    //  UseCases
     getIt.registerFactory<GetAnimeByGenreUseCase>(
         () => GetAnimeByGenreUseCase(repository: getIt()));
     getIt.registerFactory<GetAnimeGenreListUseCase>(
         () => GetAnimeGenreListUseCase(repository: getIt()));
+    getIt.registerFactory<GetAnimeCharactersByAnimeIdUseCase>(
+        () => GetAnimeCharactersByAnimeIdUseCase(repository: getIt()));
+
+    //  Blocs
     getIt.registerFactory<AnimeBloc>(() => AnimeBloc(
           getAnimeGenreListUseCase: getIt(),
           getAnimeByGenreUseCase: getIt(),
