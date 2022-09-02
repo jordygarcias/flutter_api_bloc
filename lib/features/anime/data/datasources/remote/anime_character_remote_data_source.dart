@@ -16,8 +16,8 @@ class AnimeCharacterRemoteDataSource {
     try {
       final response = await client.get('anime/$animeId/characters');
       if (response.statusCode == 200) {
-        final characters = response.data['data']['character']
-            .map((item) => AnimeCharacterModel.fromJson(item));
+        final characters = response.data['data']
+            .map((item) => AnimeCharacterModel.fromJson(item['character']));
         return Right(List<AnimeCharacterModel>.from(characters));
       }
       return Left(ApiFailure());
