@@ -34,47 +34,61 @@ void main() {
   );
 
   group('AnimeGenreListStarted is added', () {
+    final genreList = [
+      const GenreEntity(id: '1', name: 'Action'),
+      const GenreEntity(id: '2', name: 'Adventure'),
+    ];
     final failure = ApiFailure();
     blocTest<AnimeBloc, AnimeState>(
       'load genres when response is successful',
       build: () {
-        when(getAnimeGenreListUseCase()).thenAnswer((_) async => right([
-              const GenreEntity(id: '1', name: 'Action'),
-              const GenreEntity(id: '2', name: 'Adventure'),
-            ]));
+        when(getAnimeGenreListUseCase())
+            .thenAnswer((_) async => right(genreList));
         return sut;
       },
       act: (bloc) => bloc.add(AnimeGenreListStarted()),
       expect: () => [
-        AnimeState.initial().copyWith(isLoadingGenres: true),
         AnimeState(
-          genres: [
-            const GenreEntity(id: '1', name: 'Action'),
-            const GenreEntity(id: '2', name: 'Adventure'),
-          ],
+          genres: [],
+          animes: [],
+          isLoadingGenres: true,
+          isLoadingAnimes: false,
+          genreListFailure: null,
+          animeListFailure: null,
+        ),
+        AnimeState(
+          genres: genreList,
           animes: [],
           isLoadingGenres: false,
           isLoadingAnimes: false,
+          genreListFailure: null,
+          animeListFailure: null,
         ),
       ],
     );
     blocTest<AnimeBloc, AnimeState>(
       'load genresFailure when response is failure',
       build: () {
-        when(getAnimeGenreListUseCase()).thenAnswer(
-          (_) async => left(failure),
-        );
+        when(getAnimeGenreListUseCase()).thenAnswer((_) async => left(failure));
         return sut;
       },
       act: (bloc) => bloc.add(AnimeGenreListStarted()),
       expect: () => [
-        AnimeState.initial().copyWith(isLoadingGenres: true),
+        AnimeState(
+          genres: [],
+          animes: [],
+          isLoadingGenres: true,
+          isLoadingAnimes: false,
+          genreListFailure: null,
+          animeListFailure: null,
+        ),
         AnimeState(
           genres: [],
           animes: [],
           isLoadingGenres: false,
           isLoadingAnimes: false,
           genreListFailure: failure,
+          animeListFailure: null,
         ),
       ],
     );
@@ -82,33 +96,43 @@ void main() {
 
   group('AnimeListStarted', () {
     const genreId = null;
-    const animeEntity = AnimeEntity(
-      id: '1',
-      name: 'name',
-      imageUrl: 'imageUrl',
-      synopsis: 'synopsis',
-      rating: 'rating',
-      score: 0,
-      genres: [],
-    );
+    const animeList = [
+      AnimeEntity(
+        id: '1',
+        name: 'name',
+        imageUrl: 'imageUrl',
+        synopsis: 'synopsis',
+        rating: 'rating',
+        score: 0,
+        genres: [],
+      )
+    ];
     final failure = ApiFailure();
 
     blocTest<AnimeBloc, AnimeState>(
       'loadAnimeList when response was successful',
       build: () {
-        when(getAnimeByGenreUseCase(genreId)).thenAnswer(
-          (_) async => right([animeEntity]),
-        );
+        when(getAnimeByGenreUseCase(genreId))
+            .thenAnswer((_) async => right(animeList));
         return sut;
       },
       act: (bloc) => bloc.add(AnimeListStarted()),
       expect: () => [
-        AnimeState.initial().copyWith(isLoadingAnimes: true),
         AnimeState(
           genres: [],
-          animes: [animeEntity],
+          animes: [],
+          isLoadingGenres: false,
+          isLoadingAnimes: true,
+          genreListFailure: null,
+          animeListFailure: null,
+        ),
+        AnimeState(
+          genres: [],
+          animes: animeList,
           isLoadingGenres: false,
           isLoadingAnimes: false,
+          genreListFailure: null,
+          animeListFailure: null,
         )
       ],
     );
@@ -121,12 +145,20 @@ void main() {
       },
       act: (bloc) => bloc.add(AnimeListStarted()),
       expect: () => [
-        AnimeState.initial().copyWith(isLoadingAnimes: true),
+        AnimeState(
+          genres: [],
+          animes: [],
+          isLoadingGenres: false,
+          isLoadingAnimes: true,
+          genreListFailure: null,
+          animeListFailure: null,
+        ),
         AnimeState(
           genres: [],
           animes: [],
           isLoadingGenres: false,
           isLoadingAnimes: false,
+          genreListFailure: null,
           animeListFailure: failure,
         ),
       ],
@@ -139,44 +171,54 @@ void main() {
       id: '1',
       name: 'Action',
     );
-    const animeEntity = AnimeEntity(
-      id: '1',
-      name: 'name',
-      imageUrl: 'imageUrl',
-      synopsis: 'synopsis',
-      rating: 'rating',
-      score: 0,
-      genres: [],
-    );
+    const animeList = [
+      AnimeEntity(
+        id: '1',
+        name: 'name',
+        imageUrl: 'imageUrl',
+        synopsis: 'synopsis',
+        rating: 'rating',
+        score: 0,
+        genres: [],
+      )
+    ];
 
     blocTest<AnimeBloc, AnimeState>(
       'select genres and call animeList to load',
       build: () {
         when(getAnimeByGenreUseCase(genreId)).thenAnswer(
-          (_) async => right([animeEntity]),
+          (_) async => right(animeList),
         );
         return sut;
       },
-      act: (bloc) => bloc.add(
-        AnimeGenreSelected(
-          GenreEntity(
-            id: genreId.toString(),
-            name: 'Action',
-          ),
-        ),
-      ),
+      act: (bloc) => bloc.add(AnimeGenreSelected(selectedGenre)),
       expect: () => [
-        AnimeState.initial().copyWith(selectedGenre: selectedGenre),
-        AnimeState.initial().copyWith(
+        AnimeState(
           selectedGenre: selectedGenre,
-          isLoadingAnimes: true,
+          genres: [],
+          animes: [],
+          isLoadingGenres: false,
+          isLoadingAnimes: false,
+          genreListFailure: null,
+          animeListFailure: null,
         ),
         AnimeState(
           selectedGenre: selectedGenre,
-          isLoadingAnimes: false,
-          animes: [animeEntity],
           genres: [],
+          animes: [],
           isLoadingGenres: false,
+          isLoadingAnimes: true,
+          genreListFailure: null,
+          animeListFailure: null,
+        ),
+        AnimeState(
+          selectedGenre: selectedGenre,
+          genres: [],
+          animes: animeList,
+          isLoadingAnimes: false,
+          isLoadingGenres: false,
+          genreListFailure: null,
+          animeListFailure: null,
         )
       ],
     );
