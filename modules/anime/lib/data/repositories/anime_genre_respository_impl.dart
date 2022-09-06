@@ -1,7 +1,7 @@
 import 'package:core/failures/failures.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../data/models/anime_genre_model.dart';
+import '../models/anime_genre_model.dart';
 import '../../domain/entities/genre_entity.dart';
 import '../../domain/repositories/anime_genre_respository.dart';
 import '../datasources/remote/anime_genre_remote_datasource.dart';
